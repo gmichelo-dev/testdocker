@@ -20,3 +20,6 @@ jobs:
       - name: read cache
         run: |
           cat /cache/test
+      - name: read cache
+        run: |
+          sleep 10s
