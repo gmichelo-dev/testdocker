@@ -23,7 +23,7 @@ jobs:
       - run: 
           ls -lta /home
       - name: Checkout
-        uses: namespacelabs/nscloud-checkout-action@v7
+        uses: namespacelabs/nscloud-checkout-action@v7.0.0
       # - name: Build and push
       #   uses: docker/build-push-action@v6
       #   with:
