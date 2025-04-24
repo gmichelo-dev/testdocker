@@ -11,12 +11,14 @@ env:
 jobs:
   ci-1:
     runs-on:
-      - nscloud-cache-size-50gb
-      - nscloud-cache-tag-builds
-      - nscloud-exp-runner-tool-cache-20gb
-      - nscloud-git-mirror-5gb
-      - nscloud-ubuntu-24.04-amd64-32x64-with-cache
-      # - nscloud-exp-features:docker.bin=guest-injected
+      - nscloud-cache-allow-commit-from-main
+      - nscloud-cache-huggingface
+      - nscloud-cache-size-100gb
+      - nscloud-cache-tag-magnus-localstack-cache
+      - nscloud-exp-container-image-cache
+      - nscloud-no-remote-builders
+      - nscloud-ubuntu-22.04-amd64-8x32-with-cache
+
     # environment:
     #   name: Test
     steps:
