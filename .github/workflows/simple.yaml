@@ -13,6 +13,7 @@ jobs:
     runs-on:
       - nscloud-cache-allow-commit-from-main
       - nscloud-cache-size-100gb
+      - nscloud-cache-invalid
       - nscloud-cache-tag-magnus-localstack-cache
       - nscloud-exp-container-image-cache
       - nscloud-no-remote-builders
