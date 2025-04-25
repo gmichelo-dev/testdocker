@@ -11,12 +11,7 @@ env:
 jobs:
   ci-1:
     runs-on:
-      - nscloud-cache-allow-commit-from-main
-      - nscloud-cache-size-100gb
-      - nscloud-cache-invalid
-      - nscloud-cache-tag-magnus-localstack-cache
-      - nscloud-exp-container-image-cache
-      - nscloud-no-remote-builders
+      - nscloud-invalid-label
       - nscloud-ubuntu-22.04-amd64-8x32-with-cache
 
     # environment:
