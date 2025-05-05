@@ -23,6 +23,11 @@ jobs:
         uses: namespacelabs/nscloud-checkout-action@v7
         with: 
           ref: gmichelo.NSL-1234.test-branch
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.3'
+          bundler-cache: true # runs 'bundle install' and caches installed gems automatically
+      - run: bundle exec rake
       - name: Build and push
         uses: docker/build-push-action@v6
         with:
