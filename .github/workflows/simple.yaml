@@ -11,7 +11,7 @@ env:
 jobs:
   ci-1:
     runs-on:
-      - nscloud-invalid-label
+      - nscloud-git-mirror-5gb
       - nscloud-ubuntu-22.04-amd64-8x32-with-cache
 
     # environment:
