@@ -11,8 +11,7 @@ env:
 jobs:
   ci-1:
     runs-on:
-      - nscloud-git-mirror-5gb
-      - nscloud-ubuntu-20.04-amd64-8x32-with-cache
+      - my-label
 
     # environment:
     #   name: Test
