@@ -11,7 +11,7 @@ env:
 jobs:
   ci-1:
     runs-on:
-      - my-label
+      - namespace-profile-test-custom-image
 
     # environment:
     #   name: Test
