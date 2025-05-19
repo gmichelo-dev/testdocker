@@ -13,8 +13,8 @@ jobs:
     runs-on:
       - namespace-profile-test-custom-image
 
-    environment:
-      name: Test
+    # environment:
+    #   name: Test
     steps:
       - run: 
           ls -lta /home
