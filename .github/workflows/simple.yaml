@@ -11,7 +11,7 @@ env:
 jobs:
   ci-1:
     runs-on:
-      - namespace-profile-default
+      - self-hosted
 
     # environment:
     #   name: Test
