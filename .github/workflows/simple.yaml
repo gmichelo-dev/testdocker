@@ -11,9 +11,9 @@ env:
 jobs:
   ci-1:
     runs-on:
-      - namespace-profile-containerdcache
+      - self-hosted
     container:
-      image: tensorflow/tensorflow:latest-gpu-jupyter
+      image: ubuntu
       # Privileged is needed for tailscale to work.
       options: >-
         --init
