@@ -12,12 +12,12 @@ jobs:
   ci-1:
     runs-on:
       - self-hosted
-    container:
-      image: ubuntu
-      # Privileged is needed for tailscale to work.
-      options: >-
-        --init
-        --privileged
+    # container:
+    #   image: ubuntu
+    #   # Privileged is needed for tailscale to work.
+    #   options: >-
+    #     --init
+    #     --privileged
 
     # environment:
     #   name: Test
