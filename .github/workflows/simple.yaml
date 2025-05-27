@@ -13,7 +13,7 @@ jobs:
     runs-on:
       - namespace-profile-containerdcache
     container:
-      image: ubuntu:latest
+      image: tensorflow/tensorflow:latest-gpu-jupyter
       # Privileged is needed for tailscale to work.
       options: >-
         --init
