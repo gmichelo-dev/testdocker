@@ -11,7 +11,13 @@ env:
 jobs:
   ci-1:
     runs-on:
-      - self-hosted
+      - namespace-profile-containerdcache
+    container:
+      image: ubuntu:latest
+      # Privileged is needed for tailscale to work.
+      options: >-
+        --init
+        --privileged
 
     # environment:
     #   name: Test
