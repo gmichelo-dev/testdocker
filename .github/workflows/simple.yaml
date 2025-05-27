@@ -25,6 +25,8 @@ jobs:
       - name: LS
         run: 
           ls -lta /home
+      - name: Checkout
+        uses: actions/checkout@v4
       # - name: Checkout
       #   uses: namespacelabs/nscloud-checkout-action@v7
       #   with: 
