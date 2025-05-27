@@ -24,31 +24,31 @@ jobs:
     steps:
       - run: 
           ls -lta /home
-      - name: Checkout
-        uses: namespacelabs/nscloud-checkout-action@v7
-        with: 
-          ref: gmichelo.NSL-1234.test-branch
-      # - uses: ruby/setup-ruby@v1
+      # - name: Checkout
+      #   uses: namespacelabs/nscloud-checkout-action@v7
+      #   with: 
+      #     ref: gmichelo.NSL-1234.test-branch
+      # # - uses: ruby/setup-ruby@v1
+      # #   with:
+      # #     ruby-version: '3.3'
+      # #     bundler-cache: true # runs 'bundle install' and caches installed gems automatically
+      # - run: bundle exec rake
+      # - name: Build and push
+      #   uses: docker/build-push-action@v6
       #   with:
-      #     ruby-version: '3.3'
-      #     bundler-cache: true # runs 'bundle install' and caches installed gems automatically
-      - run: bundle exec rake
-      - name: Build and push
-        uses: docker/build-push-action@v6
-        with:
-          cache-from: type=gha
-          cache-to: type=gha,mode=max
-          tags: user/app:latest
-      - run: |
-         docker run --privileged --rm --ulimit rtprio=99 ubuntu bash -ic 'chrt -f 50 ls'
+      #     cache-from: type=gha
+      #     cache-to: type=gha,mode=max
+      #     tags: user/app:latest
       # - run: |
-      #     sudo go test -v ./internal/tracefs/...
-      - name: Breakpoint if tests failed
-        uses: namespacelabs/breakpoint-action@v0
-        if: always()
-        with:
-          duration: 1h
-          authorized-users: gmichelo,hugosantos
+      #    docker run --privileged --rm --ulimit rtprio=99 ubuntu bash -ic 'chrt -f 50 ls'
+      # # - run: |
+      # #     sudo go test -v ./internal/tracefs/...
+      # - name: Breakpoint if tests failed
+      #   uses: namespacelabs/breakpoint-action@v0
+      #   if: always()
+      #   with:
+      #     duration: 1h
+      #     authorized-users: gmichelo,hugosantos
   ci:
     defaults:
       run:
