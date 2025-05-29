@@ -11,7 +11,7 @@ env:
 jobs:
   ci-1:
     runs-on:
-      - self-hosted
+      - nscloud
     # container:
     #   image: ubuntu
     #   # Privileged is needed for tailscale to work.
