@@ -46,12 +46,12 @@ jobs:
       #    docker run --privileged --rm --ulimit rtprio=99 ubuntu bash -ic 'chrt -f 50 ls'
       # # - run: |
       # #     sudo go test -v ./internal/tracefs/...
-      # - name: Breakpoint if tests failed
-      #   uses: namespacelabs/breakpoint-action@v0
-      #   if: always()
-      #   with:
-      #     duration: 1h
-      #     authorized-users: gmichelo,hugosantos
+      - name: Breakpoint if tests failed
+        uses: namespacelabs/breakpoint-action@v0
+        if: always()
+        with:
+          duration: 1h
+          authorized-users: gmichelo,hugosantos
   ci:
     defaults:
       run:
