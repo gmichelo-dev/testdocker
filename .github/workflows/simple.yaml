@@ -11,7 +11,7 @@ env:
 jobs:
   ci-1:
     runs-on:
-      - windows-2022
+      - windows-2025
     # container:
     #   image: ubuntu
     #   # Privileged is needed for tailscale to work.
