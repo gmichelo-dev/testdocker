@@ -11,7 +11,7 @@ env:
 jobs:
   ci-1:
     runs-on:
-      - nscloud-ubuntu-22.04-arm64-4x16	
+      - windows-2022
     # container:
     #   image: ubuntu
     #   # Privileged is needed for tailscale to work.
@@ -22,6 +22,16 @@ jobs:
     # environment:
     #   name: Test
     steps:
+      - name: Check if WSL is installed
+        run: |
+          if (Get-Command wsl -ErrorAction SilentlyContinue) {
+            Write-Host "WSL is installed"
+            wsl --list --verbose
+          } else {
+            Write-Host "WSL is not installed"
+            exit 1
+          }
+        shell: pwsh
       - name: LS
         run: 
           ls -lta /home
