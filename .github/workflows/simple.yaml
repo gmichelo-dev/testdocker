@@ -164,6 +164,7 @@ jobs:
       - name: Build nsc
         run: go build -v -o /tmp/nsc ./cmd/nsc
       - uses: actions/checkout@v4
+      - uses: namespacelabs/nscloud-setup@v0
       - run: |
           /tmp/nsc build  .
 
