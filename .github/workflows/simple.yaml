@@ -156,6 +156,8 @@ jobs:
         uses: actions/checkout@v4
         with:
           repository: namespacelabs/foundation
+          ref: 017ac27a67ac024b95088e39ec7c02d04181c65c
+          
       - name: Set up Go
         uses: actions/setup-go@v5
         with:
