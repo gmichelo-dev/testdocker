@@ -157,7 +157,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
       - uses: namespacelabs/nscloud-setup@v0
-      - runs: |
+      - run: |
           nsc build -p -name test .
       - uses: namespacelabs/breakpoint-action@v0
         if: always()
