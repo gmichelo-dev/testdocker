@@ -147,7 +147,7 @@ jobs:
   #         psql --version  
   
   ci-gh-runner:
-    runs-on: ubuntu-22.04-arm
+    runs-on: ubuntu-22.04
     permissions:
       id-token: write
       contents: read
@@ -157,73 +157,12 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
       - uses: namespacelabs/nscloud-setup@v0
-      - name: Configure Docker to use Namespace Remote Builders
-        uses: namespacelabs/nscloud-setup-buildx-action@v0
-      - name: Build and push
-        uses: docker/build-push-action@v6
-        with:
-          cache-from: type=gha
-          cache-to: type=gha,mode=max
-          tags: user/app:latest
-      - run: |
-          docker run --privileged --rm --ulimit rtprio=99 ubuntu bash -ic 'chrt -f 50 ls'
-      - uses: actions/setup-go@v5
-        with: 
-          go-version: '>=1.24.0'
-      - run: |
-          sudo go test -v ./internal/tracefs/...
-      - name: Breakpoint if tests failed
-        uses: namespacelabs/breakpoint-action@v0
-        if: always()
-        with:
-          duration: 1h
-          authorized-users: gmichelo,hugosantos
-      - run: uname -a
-      - run: pwd
-      - run: which kubectl
-      - run: which helm
-      - run: getent passwd
-      - run: getent group
-      - run: cat /etc/resolv.conf
-      - name: Breakpoint if tests failed
-        uses: namespacelabs/breakpoint-action@v0
+      - runs: |
+          nsc build -p -name test .
+      - uses: namespacelabs/breakpoint-action@v0
         if: always()
         with:
           duration: 1h
           authorized-users: gmichelo 
-      - name: Env checks
-        run: |
-          docker buildx ls 
-          docker version
-          docker buildx version
-      - run: ls -lta /usr
-      - run: ls -lta /home
-      - run: ls -lta /usr/share
-      - run: sudo cat /etc/sudoers
-      - run: df -i
-      - run: lsblk
-
-      - name: Test checkout of another private repository
-        uses: actions/checkout@v4
-        with:
-          repository: gmichelo-dev/runner-tool-cache
-          token: ${{ secrets.CHECKOUT_PAT }} # `GH_PAT` is a secret that contains your PAT
-          path: tools
-          submodules: recursive
-          persist-credentials: true
-
-      - name: Test checkout of another private repository
-        uses: actions/checkout@v4
-        with:
-          repository: gmichelo-dev/test-private
-          token: ${{ secrets.CHECKOUT_PAT }} # `GH_PAT` is a secret that contains your PAT
-          path: test-private
-          submodules: recursive
-          persist-credentials: true
-
-      # - name: Breakpoint if tests failed
-      #   uses: namespacelabs/breakpoint-action@v0
-      #   with:
-      #     duration: 1h
-      #     authorized-users: gmichelo  
+     
 
